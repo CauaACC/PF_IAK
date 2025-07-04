@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface TarefaDaoDao {
-    @Query("SELECT * FROM itens")
-    fun getTodos(): LiveData<List<Tarefa>>
+interface TarefaDao {
+    @Query("SELECT * FROM tarefas")
+    fun getTodas(): LiveData<List<Tarefa>>
 
     @Insert
     suspend fun inserir(item: Tarefa)
