@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.pf_iak.data.Tarefa
 
 class TarefaAdapter(
     private val lista: List<Tarefa>,
@@ -39,7 +38,7 @@ class TarefaAdapter(
     override fun getItemCount(): Int = lista.size
 
     fun atualizarLista(novaLista: List<Tarefa>) {
-        lista = novaLista
+        val lista = novaLista
         notifyDataSetChanged()
     }
 }

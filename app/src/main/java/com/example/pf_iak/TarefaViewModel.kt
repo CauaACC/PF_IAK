@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.pf_iak.data.AppDatabase
-import com.example.pf_iak.data.Tarefa
 import kotlinx.coroutines.launch
 
 class TarefaViewModel(application : Application) : AndroidViewModel(application) {
