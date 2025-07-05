@@ -8,7 +8,7 @@ import com.example.pf_iak.data.AppDatabase
 import com.example.pf_iak.data.Tarefa
 import kotlinx.coroutines.launch
 
-class TarefaViewModel(application : Aplication) : AndroidViewModel(application) {
+class TarefaViewModel(application : Application) : AndroidViewModel(application) {
     private val dao = AppDatabase.getDatabase(application).tarefaDao()
     val todas: LiveData<List<Tarefa>> = dao.getTodas()
 
