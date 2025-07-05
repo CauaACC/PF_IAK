@@ -12,27 +12,27 @@
         android:padding="24dp">
 
         <EditText
-            android:id="@+id/etTitulo"
+            android:id="@+id/etEditarTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Título da Tarefa"
+            android:gravity="center"
+            android:hint="Editar título"
             android:inputType="text" />
 
         <EditText
-            android:id="@+id/etDescricao"
+            android:id="@+id/etEditarDescricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descrição"
+            android:hint="Editar descrição"
             android:inputType="textMultiLine"
             android:minLines="3"
             android:gravity="top" />
 
         <Button
-            android:id="@+id/btnSalvar"
+            android:id="@+id/btnSalvarEdicao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Salvar"
+            android:text="Salvar edição"
             android:layout_marginTop="16dp" />
-
     </LinearLayout>
 </ScrollView>

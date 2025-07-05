@@ -18,8 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         adapter = TarefaAdapter(emptyList()) { tarefa ->
-            val intent = Intent(this, DetalhesActivity::class.java)
-            intent.putExtra("tarefaId", tarefa.id)
+            val intent = Intent(this, EditarTarefaActivity::class.java)
+            intent.putExtra("id", tarefa.id)
+            intent.putExtra("titulo", tarefa.titulo)
+            intent.putExtra("descricao", tarefa.descricao)
             startActivity(intent)
         }
 
