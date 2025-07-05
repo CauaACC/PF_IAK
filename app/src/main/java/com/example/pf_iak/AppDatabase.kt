@@ -1,4 +1,4 @@
-package com.example.pf_iak.data
+package com.example.pf_iak
 
 import android.content.Context
 import androidx.room.Database
