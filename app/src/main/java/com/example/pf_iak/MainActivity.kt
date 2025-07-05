@@ -2,7 +2,6 @@ package com.example.pf_iak
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,11 +13,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var viewModel: TarefaViewModel
     private lateinit var adapter: TarefaAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = TarefaAdapter(emptyList()) {  tarefa ->
+        adapter = TarefaAdapter(emptyList()) { tarefa ->
             val intent = Intent(this, DetalhesActivity::class.java)
             intent.putExtra("tarefaId", tarefa.id)
             startActivity(intent)

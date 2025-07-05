@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class TarefaAdapter(
-    private val lista: List<Tarefa>,
+    private var lista: List<Tarefa>,
     private val onItemClick: (Tarefa) -> Unit
 ) : RecyclerView.Adapter<TarefaAdapter.TarefaViewHolder>() {
 
@@ -38,7 +38,7 @@ class TarefaAdapter(
     override fun getItemCount(): Int = lista.size
 
     fun atualizarLista(novaLista: List<Tarefa>) {
-        val lista = novaLista
+        lista = novaLista
         notifyDataSetChanged()
     }
 }

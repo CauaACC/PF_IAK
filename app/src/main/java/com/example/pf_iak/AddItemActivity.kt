@@ -5,35 +5,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import androidx.room.Room
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import androidx.lifecycle.ViewModelProvider
 
 class AddItemActivity : AppCompatActivity() {
 
-    private lateinit var db: AppDatabase
-    private lateinit var dao: TarefaDao
+    private lateinit var viewModel: TarefaViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_item)
 
-        // Inicializando o banco de dados
-        db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java,
-            "tarefas.db"
-        ).build()
+        viewModel = ViewModelProvider(this)[TarefaViewModel::class.java]
 
-        dao = db.tarefaDao()
-
-        // Pegando as views do layout
         val etTitulo = findViewById<EditText>(R.id.etTitulo)
         val etDescricao = findViewById<EditText>(R.id.etDescricao)
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
 
-        // Ao clicar em "Salvar"
         btnSalvar.setOnClickListener {
             val titulo = etTitulo.text.toString()
             val descricao = etDescricao.text.toString()
@@ -41,16 +28,10 @@ class AddItemActivity : AppCompatActivity() {
             if (titulo.isNotBlank() && descricao.isNotBlank()) {
                 val novaTarefa = Tarefa(titulo = titulo, descricao = descricao)
 
-                // Inserção usando coroutine
-                lifecycleScope.launch(Dispatchers.IO) {
-                    dao.inserir(novaTarefa)
+                viewModel.inserir(novaTarefa)
 
-                    // Mostra Toast na thread principal
-                    launch(Dispatchers.Main) {
-                        Toast.makeText(this@AddItemActivity, "Tarefa salva!", Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                }
+                Toast.makeText(this, "Tarefa salva!", Toast.LENGTH_SHORT).show()
+                finish()
             } else {
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
             }
